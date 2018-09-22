@@ -1,32 +1,58 @@
+.example-container {
+  width: 100vw;
+   height: 90vh;
+  background-color: #fff;
+}
 
+.main_toolBar{
+  background-color: #3f51b5;
+  color:#fff;
+}
+.example-sidenav-content {
+  background-color:#fff;
 
-/* AppComponent's private CSS styles */
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
 }
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
+.sidenav_tool{
+  margin-bottom: 2px;
+  background-color: #acd82b;
+  color:#fff;
 }
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+.toogle-icon{
+  display: flex;
+  float:left;
+  width:auto;
 }
-nav a:visited, a:link {
-  color: #607D8B;
+.chart-content{
+  display:block;
+  height:auto;
+  width: auto;
+  align-items: center;
+  justify-content: center;
 }
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
 
-      color: #039be5;
-    }
+.example-sidenav {
+  /* padding-left: 1px;
+  padding-right: 1px; */
+    width:auto;
+
+}
+.side_expansion{
+  /* padding */
+}
+
+.tIcon{
+  padding:5px;
+}
+
+.chartList a{
+  font-size: 14px;
+}
+.mainlayout{
+  height:100%;
+}
+
+.main_toolBar a{
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-pproject App', () => {
+describe('awesome-chart App', () => {
   let page: AppPage;
 
   beforeEach(() => {
