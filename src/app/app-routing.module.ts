@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 //import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { SolidGaugeComponent } from './solidGauge/solidGauge.component';
 import { OverviewComponent } from './overview/overview.component';
 import { SolidArcGaugeComponent } from './solid-arc-gauge/solid-arc-gauge.component';
@@ -60,5 +60,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule {
-
 }
