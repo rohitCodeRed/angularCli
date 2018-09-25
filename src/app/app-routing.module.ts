@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './auth.guard';
 //import { CommonModule } from '@angular/common';
 import { RouterModule, Routes} from '@angular/router';
 import { SolidGaugeComponent } from './solidGauge/solidGauge.component';
@@ -25,10 +26,16 @@ import { NegativeAreaComponent } from './negative-area/negative-area.component';
 import { InvertedAreaComponent } from './inverted-area/inverted-area.component';
 import { SplineAreaComponent } from './spline-area/spline-area.component';
 import { RangeLineAreaComponent } from './range-line-area/range-line-area.component';
+import { LoginScreenComponent } from './login-screen/login-screen.component';
+import { RegisterScreenComponent } from './register-screen/register-screen.component';
+
 
 const routes: Routes = [
-  { path: 'overview', component: OverviewComponent },
-  { path: '', redirectTo: '/overview', pathMatch: 'full' },
+  { path: '', redirectTo: OverviewComponent, pathMatch: 'full'},
+  { path: 'overview', component: OverviewComponent ,canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '' },
+  { path: 'login', component: LoginScreenComponent },
+  { path: 'register', component: RegisterScreenComponent },
   { path: 'solidGauge', component: SolidGaugeComponent },
   { path: 'solidArcGauge', component: SolidArcGaugeComponent },
   { path: 'activityGauge', component: ActivitySolidGaugeComponent },

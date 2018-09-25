@@ -5,6 +5,7 @@ import { ChartDataService } from './chart-data.service';
 import { AuthenticationService } from './login.service';
 import { AlertService } from './alert.service';
 import { RegisterService } from './register.service';
+import { AuthGuard } from './auth.guard';
 
 import { AppComponent } from './app.component';
 //import material animation
@@ -53,6 +54,8 @@ import { InvertedAreaComponent } from './inverted-area/inverted-area.component';
 import { SplineAreaComponent } from './spline-area/spline-area.component';
 import { RangeLineAreaComponent } from './range-line-area/range-line-area.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
+//import { AuthGuardComponent } from './auth-guard/auth-guard.component';
+
 
 export function highchartsfactory() {
   const hc = require('highcharts');
@@ -67,6 +70,7 @@ export function highchartsfactory() {
 @NgModule({
   declarations: [
     AppComponent,
+    //AuthGuardComponent,
     LoginScreenComponent,
     SolidGaugeComponent,
     OverviewComponent,
@@ -112,14 +116,15 @@ export function highchartsfactory() {
     NgbModule.forRoot()
   ],
   providers: [
-    {
-     provide: HighchartsStatic,
-     useFactory: highchartsfactory
-   },
-   ChartDataService,
-   AuthenticationService,
+   AuthGuard,
    AlertService,
-   RegisterService
+   AuthenticationService,
+   RegisterService,
+   {
+    provide: HighchartsStatic,
+    useFactory: highchartsfactory
+  },
+   ChartDataService
   ],
   bootstrap: [AppComponent]
 })

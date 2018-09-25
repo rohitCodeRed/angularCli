@@ -31,22 +31,22 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.router.events
-      .filter((event) => event instanceof NavigationEnd)
-      .map(() => this.activatedRoute)
-      .map((route) => {
-          while (route.firstChild) route = route.firstChild;
-          return route;
-        })
-      .subscribe((event) => {
-
-         event.url.subscribe((url)=>{
-          console.log("URL: ",url);
-          // if(url[0].path != 'simpleBar'){
-          //   this.router.navigate(['simpleBar']);
-          // }
-
-        });
+      // this.router.events
+      // .filter((event) => event instanceof NavigationEnd)
+      // .map(() => this.activatedRoute)
+      // .map((route) => {
+      //     while (route.firstChild) route = route.firstChild;
+      //     return route;
+      //   })
+      // .subscribe((event) => {
+      //
+      //    event.url.subscribe((url)=>{
+      //     console.log("URL: ",url);
+      //     // if(url[0].path != 'simpleBar'){
+      //     //   this.router.navigate(['simpleBar']);
+      //     // }
+      //
+      //   });
         //event.sub
         //this.router.navigate(['simpleBar']);
       });
