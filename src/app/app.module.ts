@@ -54,6 +54,8 @@ import { InvertedAreaComponent } from './inverted-area/inverted-area.component';
 import { SplineAreaComponent } from './spline-area/spline-area.component';
 import { RangeLineAreaComponent } from './range-line-area/range-line-area.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
+import { RegisterScreenComponent } from './register-screen/register-screen.component';
+import { AlertScreenComponent } from './alert-screen/alert-screen.component';
 //import { AuthGuardComponent } from './auth-guard/auth-guard.component';
 
 
@@ -70,8 +72,10 @@ export function highchartsfactory() {
 @NgModule({
   declarations: [
     AppComponent,
+    AlertScreenComponent,
     //AuthGuardComponent,
     LoginScreenComponent,
+    RegisterScreenComponent,
     SolidGaugeComponent,
     OverviewComponent,
     SolidArcGaugeComponent,

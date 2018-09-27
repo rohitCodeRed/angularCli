@@ -14,6 +14,7 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  currentUser: boolean;
   panelOpenState: boolean = false;
   constructor(private router:Router, private activatedRoute: ActivatedRoute,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+      this.currentUser = false;
       // this.router.events
       // .filter((event) => event instanceof NavigationEnd)
       // .map(() => this.activatedRoute)
@@ -49,7 +51,5 @@ export class AppComponent implements OnInit {
       //   });
         //event.sub
         //this.router.navigate(['simpleBar']);
-      });
+      }
     }
-
-}

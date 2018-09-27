@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthenticationService } from '../login.services';
-import { AlertService } from '../alert.services';
+import { AuthenticationService } from '../login.service';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -23,7 +23,7 @@ export class LoginScreenComponent implements OnInit {
 
     ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        //this.authenticationService.logout();
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

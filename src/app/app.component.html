@@ -2,7 +2,7 @@
 <div class="mainlayout">
 
 
-  <mat-toolbar class="main_toolBar">
+  <mat-toolbar *ngIf="currentUser" class="main_toolBar">
     <span>
       <div class="toggle-icon">
         <button type="button" mat-button (click)="drawer.toggle()">
@@ -14,7 +14,7 @@
     <span>Awesome Chart</span>
   </mat-toolbar>
   <mat-drawer-container class="example-container">
-    <mat-drawer #drawer class="example-sidenav" mode="over">
+    <mat-drawer #drawer class="example-sidenav" mode="over" *ngIf="currentUser">
 
       <!-- <mat-toolbar class="sidenav_tool">
         <span class="tIcon"><mat-icon svgIcon="multi_chart"></mat-icon></span>

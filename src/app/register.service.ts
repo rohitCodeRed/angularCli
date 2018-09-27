@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class RegisterService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   register(data) {
       return this.http.post<any>('/api/register', data)

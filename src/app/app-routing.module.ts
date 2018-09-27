@@ -31,11 +31,11 @@ import { RegisterScreenComponent } from './register-screen/register-screen.compo
 
 
 const routes: Routes = [
-  { path: '', redirectTo: OverviewComponent, pathMatch: 'full'},
-  { path: 'overview', component: OverviewComponent ,canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '' },
   { path: 'login', component: LoginScreenComponent },
   { path: 'register', component: RegisterScreenComponent },
+  { path: 'overview', component: OverviewComponent ,canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'overview', pathMatch: 'full'},
+  { path: '**', redirectTo: '' },
   { path: 'solidGauge', component: SolidGaugeComponent },
   { path: 'solidArcGauge', component: SolidArcGaugeComponent },
   { path: 'activityGauge', component: ActivitySolidGaugeComponent },
