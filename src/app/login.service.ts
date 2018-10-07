@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import { environment } from '../environments/environment';
+
+
 
 @Injectable()
 export class AuthenticationService {
+    loginUrl: string = environment.serverUrl + '/api/logged/loggedIn';
+    logoutUrl:string = environment.serverUrl + '/api/logged/loggedOut';
+    //_headers =
+
     constructor(private http: HttpClient) { }
 
-    login(username: string, password: string) {
-        return this.http.post<any>('/api/authenticate', { username: username, password: password })
+    login(username: string, password: string): Observable<any> {
+        return this.http.post<any>(this.loginUrl, { username: username, password: password })
             .map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
@@ -21,7 +28,10 @@ export class AuthenticationService {
     }
 
     logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        let curentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let res = 'token '+curentUser.token;
+        const httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json','Authorization':res})};
+        
+        return this.http.get<any>(this.logoutUrl,httpOptions);
+
     }
-}

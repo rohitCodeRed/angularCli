@@ -35,11 +35,13 @@ export class LoginScreenComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+                      this.loading = true;
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error.message);
                     this.loading = false;
                 });
     }
+
 
 }

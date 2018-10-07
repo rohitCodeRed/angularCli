@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="mainlayout">
+<div class="mainlayout" >
 
 
-  <mat-toolbar *ngIf="currentUser" class="main_toolBar">
+  <mat-toolbar *ngIf="currentUserLogin" class="main_toolBar" >
     <span>
       <div class="toggle-icon">
         <button type="button" mat-button (click)="drawer.toggle()">
@@ -12,9 +12,28 @@
     </span>
     <a routerLink="/overview"><mat-icon svgIcon="home"></mat-icon></a>
     <span>Awesome Chart</span>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-button class="profileOption" [matMenuTriggerFor]="menu">
+      <img   class="img_prof" src="/assets/profile.png"/> {{nickName}}
+      <img  src="/assets/more.png"/>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <img  src="/assets/email.svg"/>
+        <span> {{email}}</span>
+      </button>
+      <button mat-menu-item (click)="logedOut()">
+        <img  src="/assets/signOut.svg"/>
+        <span> Sign Out</span>
+      </button>
+
+    </mat-menu>
+
+
+
   </mat-toolbar>
   <mat-drawer-container class="example-container">
-    <mat-drawer #drawer class="example-sidenav" mode="over" *ngIf="currentUser">
+    <mat-drawer  #drawer class="example-sidenav" mode="over" >
 
       <!-- <mat-toolbar class="sidenav_tool">
         <span class="tIcon"><mat-icon svgIcon="multi_chart"></mat-icon></span>
@@ -94,4 +113,5 @@
         <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>
+
 </div>

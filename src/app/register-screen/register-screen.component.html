@@ -15,9 +15,9 @@
     </div>
     <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="firstName">Nick Name</label>
-            <input type="text" class="form-control" name="nickName" [(ngModel)]="model.nickName" #nickName="ngModel" required />
-            <div *ngIf="f.submitted && !nickName.valid" class="help-block">First Name is required</div>
+            <label for="nickName">Nick Name</label>
+            <input type="text" class="form-control" name="nickname" [(ngModel)]="model.nickname" #nickname="ngModel" required />
+            <div *ngIf="f.submitted && !nickname.valid" class="help-block">Nick Name is required</div>
         </div>
         <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
             <label for="lastName">Last Name</label>

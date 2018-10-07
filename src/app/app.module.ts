@@ -18,6 +18,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -115,6 +116,7 @@ export function highchartsfactory() {
     MatListModule,
     MatGridListModule,
     MatInputModule,
+    MatMenuModule,
     FormsModule,
     AppRoutingModule,
     NgbModule.forRoot()

@@ -1,7 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
-import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
+import {Router, NavigationStart, ActivatedRoute} from '@angular/router';
+import { AuthenticationService } from './login.service';
+import { AlertService } from './alert.service';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
@@ -14,9 +16,13 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  currentUser: boolean;
+  currentUserLogin: boolean = false;
   panelOpenState: boolean = false;
-  constructor(private router:Router, private activatedRoute: ActivatedRoute,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  buttonOption:boolean = true;
+  email:string;
+  nickName:string;
+
+  constructor(private alertService: AlertService,private authenticationService: AuthenticationService ,private router:Router, private activatedRoute: ActivatedRoute,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
         'menu',
         sanitizer.bypassSecurityTrustResourceUrl('assets/menu.svg'));
@@ -32,24 +38,35 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.currentUser = false;
-      // this.router.events
-      // .filter((event) => event instanceof NavigationEnd)
-      // .map(() => this.activatedRoute)
-      // .map((route) => {
-      //     while (route.firstChild) route = route.firstChild;
-      //     return route;
-      //   })
-      // .subscribe((event) => {
-      //
-      //    event.url.subscribe((url)=>{
-      //     console.log("URL: ",url);
-      //     // if(url[0].path != 'simpleBar'){
-      //     //   this.router.navigate(['simpleBar']);
-      //     // }
-      //
-      //   });
-        //event.sub
-        //this.router.navigate(['simpleBar']);
+
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationStart) {
+              if(localStorage.getItem('currentUser')){
+                this.currentUserLogin = true;
+                let curentUser = JSON.parse(localStorage.getItem('currentUser'));
+                this.email= curentUser.username;
+                this.nickName = curentUser.nickname;
+              }
+              else{
+                this.currentUserLogin = false;
+              }
+            }
+          });
+        }
+
+      logedOut(){
+        this.authenticationService.logout()
+        .subscribe(
+            data => {
+                localStorage.removeItem('currentUser');
+                this.router.navigate(['login']);
+            },
+            error => {
+                this.alertService.error(error.message);
+                //this.loading = false;
+            });
       }
+
+
+      
     }
