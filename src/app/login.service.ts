@@ -31,7 +31,9 @@ export class AuthenticationService {
         let curentUser = JSON.parse(localStorage.getItem('currentUser'));
         let res = 'token '+curentUser.token;
         const httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json','Authorization':res})};
-        
+
         return this.http.get<any>(this.logoutUrl,httpOptions);
 
     }
+
+}
