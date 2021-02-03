@@ -33,12 +33,21 @@ export class LoginScreenComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                      this.loading = true;
+                user => {
+                    if (user && user.token) {
+                            // store user details and jwt token in local storage to keep user logged in between page refreshes
+                            localStorage.setItem('currentUser', JSON.stringify(user));
+                            this.router.navigate([this.returnUrl]);
+                            this.loading = true;
+                        }else{
+                            this.alertService.error("Invalid user password or username");
+                            this.loading = false;
+                        }
+                    
                 },
                 error => {
-                    this.alertService.error(error.message);
+                    console.log("On Login",error);
+                    this.alertService.error(error.error);
                     this.loading = false;
                 });
     }
