@@ -11,10 +11,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npx -p @angular/cli@11.1.0'
                 sh 'npm install'
-                sh 'npx ng --help'
-                sh 'npx ng build'
+                sh 'npx -p @angular/cli@11.1.0 ng --help'
+                sh 'npx -p @angular/cli@11.1.0 ng build'
             }
         }
         stage('Deliver') { 
