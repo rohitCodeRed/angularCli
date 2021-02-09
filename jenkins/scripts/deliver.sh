@@ -2,7 +2,7 @@
 
 #Run the angular project on port 4200
 set -x
-ng serve &
+npx ng serve &
 sleep 1
 echo $! > .pidfile
 set +x
